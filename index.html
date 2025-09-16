@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="./assets/point.svg" type="image/x-icon">
 
     <!-- Animate CSS -->
     <link
@@ -22,16 +23,31 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- JS -->
-    <script src="./main.js" defer></script>
+    <script defer type="module" src="./main.js" defer></script>
 
     <title>Smart Home | Thermostat Widget</title>
   </head>
   <body>
+    <button class="theme-toggle" id="themeToggle">
+      <ion-icon name="sunny"></ion-icon>
+      <span>Light</span>
+    </button>
     <div class="main-container">
       <div class="container animate__animated animate__fadeInUp">
         <div class="top-content">
           <h1 class="logo">Thermostat</h1>
-          <select id="rooms"></select>
+          <select id="rooms">
+            
+          </select>
+          <button  id="add-room-btn" class="add-room-btn">
+            <ion-icon name="add-outline" class="add-room-icon"></ion-icon>
+          </button>
+          <!-- Add to HTML -->
+
+<audio id="acSound" preload="auto">
+  <source src="./assets/audio/kitchen.mp3" type="audio/mpeg">
+
+</audio>
         </div>
         <!-- Interior card -->
         <div class="room">
@@ -118,13 +134,40 @@
           </div>
         </div>
       </div>
+      <div class="toggle-wrapper">
 
-      <div
+        <div
         class="container rooms-control animate__animated animate__fadeIn"
-      ></div>
+        >
+        
+      </div>
+      <div class="toggle-container">
+        <span>AC Power:</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="ac-power-toggle">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="status-indicator"></span>
+      </div>
+      
+      
     </div>
-
+    
+  </div>
+  <div class="modal hidden" id="addRoomModal">
+    <div class="modal-content">
+      <h3>Add New Room</h3>
+    <input type="text" id="newRoomName" placeholder="Room name">
+    <button id="confirmAddRoom">Add</button>
+    <button id="cancelAddRoom">Cancel</button>
+    </div>
+  </div>
     <!-- Ionicons -->
+     <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

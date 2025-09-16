@@ -6,6 +6,7 @@
 
 :root {
   --bg-light: #eaeaeb;
+  --card-bg:#ffffff;
   --text-primary: #515155;
   --text-secondary: #7c7c83;
   --cool-blue: #4458c3;
@@ -21,6 +22,20 @@ button {
   font-family: "Manrope", sans-serif;
   color: var(--text-primary);
 }
+select{
+  border: 1px solid rgba(0,0,0,0.25) !important ;
+  
+  ;
+}
+.add-room-btn{
+  transition: .38s ease-in;
+}
+.add-room-btn:hover{
+  font-size: 18px;
+  background: orange;
+  color: #fff;
+}
+
 
 body {
   padding: 50px 0;
@@ -30,19 +45,146 @@ body {
   justify-content: center;
   align-items: center;
 }
+:root {
+  /* Light Theme (default) */
+  --bg-light: #eaeaeb;
+  --bg-dark: #1a1a1a;
+  --text-primary: #515155;
+  --text-primary-dark: #e0e0e0;
+  --text-secondary: #7c7c83;
+  --text-secondary-dark: #a0a0a0;
+  --cool-blue: #4458c3;
+  --cool-blue-dark: #5d74e6;
+  --warm-red: #ec6062;
+  --warm-red-dark: #ff7b7d;
+  --accent: #ffd7a8;
+  --accent-dark: #e8c190;
+  --card-bg: #ffffff;
+  --card-bg-dark: #2d2d2d;
+  --border-color: #e7e7e7;
+  --border-color-dark: #444444;
+  --switch-bg: #ccc;
+  --switch-bg-dark: #555;
+  --switch-active: var(--warm-red);
+  --switch-active-dark: var(--warm-red-dark);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-light: var(--bg-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --cool-blue: var(--cool-blue-dark);
+  --warm-red: var(--warm-red-dark);
+  --accent: var(--accent-dark);
+  --border-color: var(--border-color-dark);
+  --switch-bg: var(--switch-bg-dark);
+  --switch-active: var(--switch-active-dark);
+  --card-bg:#353535;
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+}
+body.dark{
+  background: green;
+}
+.container {
+  background-color: var(--card-bg);
+}
+
+.room-control {
+  border-bottom-color: var(--border-color);
+}
+
+.default-settings {
+  background-color: var(--bg-light);
+}
+
+.inputs input {
+  background-color: var(--bg-light);
+}
+
+.toggle-slider {
+  background-color: var(--switch-bg);
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--switch-active);
+}
+
+.time-display {
+  border-color: var(--border-color);
+}
+
+.bar {
+  background-color: var(--border-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.theme-toggle ion-icon {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] {
+  /* Make the modal backdrop darker in dark mode */
+  .modal {
+    background: rgba(0,0,0,0.3);
+  }
+  
+  /* Adjust room image overlay for better contrast */
+  .room {
+    filter: brightness(0.8);
+  }
+  
+  /* Make active preset buttons more visible */
+  #cool.active, #warm.active {
+    background-color: var(--cool-blue);
+    color: white;
+  }
+  
+  /* Adjust knob visibility on temp range */
+  .knob {
+    outline-color: var(--card-bg-dark);
+  }
+}
 
 .container {
   padding: 30px;
-  background-color: #ffffff;
+ 
   border-radius: 8px;
   cursor: pointer;
   width: 450px;
+  background: var(--card-bg);
 }
+
 
 .main-container {
   display: flex;
   gap: 20px;
   align-items: start;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .main-content {
@@ -182,7 +324,7 @@ svg.point {
 .inputs #save {
   border: none;
   background-color: var(--cool-blue);
-  color: #ffffff;
+  color: var(--card-bg);
   font-weight: 500;
   padding: 8px 10px;
   border-radius: 4px;
@@ -313,7 +455,7 @@ svg.point {
   justify-content: space-between;
   align-items: center;
 }
-
+.add-room-btn,
 .room-control .top button.switch {
   width: 36px;
   height: 36px;
@@ -373,6 +515,33 @@ svg.point {
   .container {
     width: 360px;
   }
+  .logo{
+    font-size: 14px;
+  }
+  .time-input{
+   position: absolute;
+   top: 55px;
+}
+.time-input.time-input-1{
+  left: -20px;
+}
+.time-input.time-input-2{
+  right: 50px;
+}
+
+.time-display {
+position: relative;
+}
+.bars{
+  margin-left: -50px;
+}
+select {
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.2rem;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
 }
 
 @media only screen and (max-width: 380px) {
@@ -388,6 +557,447 @@ svg.point {
 span.room-status {
   display: block;
   /* border: solid 1px pink; */
-  margin: 20px 0 0 0;
+  margin: 50px 0 0 0;
   color: #7c7c83;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--warm-red);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(30px) !important;
+}
+
+/* Add animation classes */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-pulse {
+  animation: pulse 0.3s ease;
+}
+.toggle-wrapper{
+  position: relative;
+  padding-bottom: 50px;
+  background: var(--card-bg)
+}
+.toggle-container{
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+  z-index: 30;
+}
+.toggle-container span{
+  margin-right: 10px;
+  color: var(--warm-red) !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.time-input {
+  width: 80px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  background: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.time-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+.time-input {
+  /* Force 24-hour format in browsers that support it */
+  -moz-appearance: textfield;
+}
+
+.time-input::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .time-input[type="time"] {
+    position: relative;
+  }
+  .time-input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+  }
+}
+/* For the new room modal */
+.modal {
+  position: fixed;
+  width:100%;
+  height: 100%;
+  display: flex;
+align-items: center;
+justify-content: center;
+  gap: 10px;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.05);
+  padding: 20px;
+  z-index: 100;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.modal-content input {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 4px;
+  height: 48px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.toggle-container:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.toggle-container span:first-child {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+  min-width: 80px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e0e0e0;
+  transition: .4s;
+  border-radius: 34px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .toggle-slider {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #2196F3, 0 0 0 3px rgba(33, 150, 243, 0.2);
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+  background: #e0e0e0;
+  transition: background 0.3s ease;
+}
+
+input:checked ~ .status-indicator {
+  background: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+/* Animation for toggle */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.toggle-switch:active .toggle-slider:before {
+  animation: pulse 0.3s ease;
+}
+:root {
+  --bg-light: #eaeaeb;
+  --bg-dark: #1a1a1a;
+
+  --text-primary: #515155;
+  --text-primary-dark: #e0e0e0;
+
+  --text-secondary: #7c7c83;
+  --text-secondary-dark: #a0a0a0;
+
+  --cool-blue: #4458c3;
+  --cool-blue-dark: #5d74e6;
+
+  --warm-red: #ec6062;
+  --warm-red-dark: #ff7b7d;
+
+  --accent: #ffd7a8;
+  --accent-dark: #e8c190;
+
+  --card-bg: #ffffff;
+  --card-bg-dark: #2d2d2d;
+
+  --border-color: #e7e7e7;
+  --border-color-dark: #444444;
+
+  --switch-bg: #ccc;
+  --switch-bg-dark: #555;
+
+  --switch-active: var(--warm-red);
+  --switch-active-dark: var(--warm-red-dark);
+}
+
+[data-theme="dark"] {
+  --bg-light: var(--bg-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --cool-blue: var(--cool-blue-dark);
+  --warm-red: var(--warm-red-dark);
+  --accent: var(--accent-dark);
+  --card-bg: var(--card-bg-dark);
+  --border-color: var(--border-color-dark);
+  --switch-bg: var(--switch-bg-dark);
+  --switch-active: var(--switch-active-dark);
+}
+
+/* Base element styles */
+body,
+input,
+select,
+option,
+button {
+  font-family: "Manrope", sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+}
+
+/* Select input */
+select {
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.8rem;
+  border-radius: 0.2rem;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Button hover */
+.add-room-btn:hover {
+  font-size: 18px;
+  background: var(--warm-red);
+  color: var(--card-bg);
+}
+
+/* Inputs */
+.inputs input,
+.time-input {
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.inputs #save {
+  background-color: var(--cool-blue);
+  color: var(--card-bg);
+}
+
+#newPreset {
+  color: var(--cool-blue);
+}
+
+#newPreset:hover {
+  color: var(--cool-blue-dark);
+}
+
+#cool,
+#warm,
+#reduce,
+#increase {
+  background-color: var(--card-bg);
+  transition: background-color 0.2s ease-in-out;
+  border: 1px solid var(--border-color);
+}
+
+#cool:hover,
+#warm:hover,
+#reduce:hover,
+#increase:hover {
+  background-color: var(--border-color);
+}
+
+/* Toggles and sliders */
+.toggle-slider {
+  background-color: var(--switch-bg);
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--switch-active);
+}
+
+/* Knob inner colors */
+.knob {
+  background-color: var(--text-secondary);
+}
+.inner {
+  background-color: var(--accent);
+}
+
+/* Container and elements */
+.container,
+.default-settings,
+.toggle-wrapper {
+  background-color: var(--card-bg);
+}
+
+.room-control {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.time-display {
+  border: 1px solid var(--border-color);
+}
+
+.bar {
+  background-color: var(--border-color);
+}
+
+.theme-toggle {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Modal in dark mode */
+[data-theme="dark"] .modal {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .room {
+  filter: brightness(0.8);
+}
+
+[data-theme="dark"] #cool.active,
+[data-theme="dark"] #warm.active {
+  background-color: var(--cool-blue);
+  color: var(--card-bg);
+}
+
+[data-theme="dark"] .knob {
+  outline-color: var(--card-bg);
+}
+.cool-active {
+  background-color: #b8d4ff;
+}
+
+.warm-active {
+  background-color: #ffa8a8;
+}
+
+.inactive {
+  color: #333 !important;
 }
